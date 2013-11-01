@@ -119,4 +119,19 @@ in your fail action:
     }
 ```
 
+Template
+--------
+
+to rewrite default template put your own to app/Resources/jh9RobokassaBundle/views/Twig/payForm.html.twig
+
+```twig
+# app/Resources/jh9RobokassaBundle/views/Twig/payForm.html.twig
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div>
+        <button type="submit" class="btn btn-primary"> ROBOKASSA </button>
+    </div>
+{{ form_end(form) }}
+```
+
 
