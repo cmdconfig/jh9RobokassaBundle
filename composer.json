@@ -1,0 +1,26 @@
+{
+    "name": "jh9/robokassa-bundle",
+    "type": "symfony-bundle",
+    "description": "robokassa support for symfony2",
+    "keywords": ["Robokassa"],
+    "homepage": "https://github.com/jh9aea/jh9RobokassaBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Alex",
+            "email": "jh9aea@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "~2.1",
+        "twig/twig": "~1.5",
+        "symfony/form": "~2.1"
+    },
+    "target-dir": "jh9/RobokassaBundle",
+    "autoload": {
+        "psr-0": {
+            "jh9\\RobokassaBundle": ""
+        }
+    }
+}
