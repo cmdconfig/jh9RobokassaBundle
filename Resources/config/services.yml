@@ -1,0 +1,19 @@
+parameters:
+#    jh9_robokassa.example.class: jh9\RobokassaBundle\Example
+
+services:
+#    jh9_robokassa.example:
+#        class: %jh9_robokassa.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    jh9.robokassa.manager:
+        class: jh9\RobokassaBundle\Manager\RobokassaManager
+        arguments: [ %jh9.robokassa.login%, %jh9.robokassa.password1%, %jh9.robokassa.password2%, %jh9.robokassa.test%, @form.factory ]
+
+    jh9.robokassa.twig.form:
+        class: jh9\RobokassaBundle\Twig\RobokassaExtension
+        arguments: [@twig, @jh9.robokassa.manager]
+        public: false
+        tags:
+            - { name: twig.extension }
+
+
