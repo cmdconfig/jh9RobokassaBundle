@@ -1,9 +1,7 @@
 RobokassaBundle
 ===============
 
-[Описание на русском](https://github.com/jh9aea/jh9RobokassaBundle/README.ru.md)
-
-current version supports only POST methods
+Текущая версия поддерживает только POST методы
 
 Installation
 ------------
@@ -39,21 +37,24 @@ jh9_robokassa:
 Usage
 -----
 
-in your template (to generate the "pay" button):
+В шаблоне, в котором нужно сгенерировать кнопку "Оплатить"
 
 ```twig
 #pay_order.html.twig
-    {{ jh9_robokassa_form(order.id, order.price {# (optional) , {
-                "template": "jh9RobokassaBundle:Twig:payForm.html.twig", {# default #}
-                "Desc": "my description", {# default null #}
-                "IncCurrLabel": "WMZM", {# default null #}
-                "Encoding": "utf-8" {# default #}
+    {{ jh9_robokassa_form(
+        order.id, {# InvId #}
+        order.price {# OutSum #}
+        {# (опционально) , {
+                "template": "jh9RobokassaBundle:Twig:payForm.html.twig", {# значение по умолчанию #}
+                "Desc": "my description", {# по умолчанию не присутствует #}
+                "IncCurrLabel": "WMZM", {# по умолчанию не присутствует #}
+                "Encoding": "utf-8" {# значение по умолчанию #}
             }
         #}
     ) }}
 ```
 
-in your result action:
+Оповещение об оплате (ResultURL):
 
 ```php
     /**
@@ -84,7 +85,7 @@ in your result action:
     }
 ```
 
-in your success action you can do:
+Переадресация пользователя при успешной оплате (SuccessURL):
 
 ```php
     /**
@@ -106,7 +107,7 @@ in your success action you can do:
     }
 ```
 
-in your fail action:
+Переадресация пользователя при отказе от оплаты (FailURL)
 
 ```php
     /**
@@ -127,7 +128,7 @@ in your fail action:
 Template
 --------
 
-to rewrite default template put your own to app/Resources/jh9RobokassaBundle/views/Twig/payForm.html.twig
+Для того что бы использовать свой шаблон положите его в app/Resources/jh9RobokassaBundle/views/Twig/payForm.html.twig
 
 ```twig
 # app/Resources/jh9RobokassaBundle/views/Twig/payForm.html.twig
@@ -139,8 +140,7 @@ to rewrite default template put your own to app/Resources/jh9RobokassaBundle/vie
 {{ form_end(form) }}
 ```
 
-or set 'template' option in robokassa form call:
-
+или можно указать его в генерации формы:
 ```twig
     {{ jh9_robokassa_form(
         order.id,
