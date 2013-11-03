@@ -21,11 +21,13 @@ class PayModel
 
     protected $SignatureValue;
 
-    protected $Encoding = 'utf-8';
+    protected $Encoding;
 
     protected $password1;
 
     protected $password2;
+
+    protected $IncCurrLabel;
 
     /**
      * @param mixed $Desc
@@ -162,5 +164,23 @@ class PayModel
     {
         return $this->password2;
     }
+
+    /**
+     * @param mixed $IncCurrLabel
+     */
+    public function setIncCurrLabel($IncCurrLabel)
+    {
+        $this->IncCurrLabel = $IncCurrLabel;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIncCurrLabel()
+    {
+        return $this->IncCurrLabel;
+    }
+
 
 } 

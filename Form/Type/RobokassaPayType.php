@@ -24,9 +24,7 @@ class RobokassaPayType extends AbstractType
         $builder->add('MrchLogin', 'hidden')
             ->add('OutSum', 'hidden')
             ->add('InvId', 'hidden')
-            ->add('Desc', 'hidden')
             ->add('SignatureValue', 'hidden')
-            ->add('Encoding', 'hidden', array('data' => 'utf-8'))
         ;
     }
 

@@ -17,6 +17,8 @@ class RobokassaExtension extends \Twig_Extension
 
     private $provider;
 
+    private $options = array();
+
     function __construct(\Twig_Environment $twig, RobokassaFormProviderInterface $formProvider)
     {
         $this->twig = $twig;
@@ -35,13 +37,37 @@ class RobokassaExtension extends \Twig_Extension
         );
     }
 
-    public function createFormView($orderId, $outSum, $template = "jh9RobokassaBundle:Twig:payForm.html.twig")
+    public function createFormView($orderId, $outSum, $options = array())
     {
-        $template = $this->twig->loadTemplate($template);
-        $form = $this->provider->createForm($orderId, $outSum);
+        $this->resolveOptions($options);
+
+        $template = $this->twig->loadTemplate($this->options['template']);
+        $form = $this->provider->createForm($orderId, $outSum, $this->options);
+
         return $template->render(array('form' => $form->createView()));
     }
 
+    protected function resolveOptions($options = array())
+    {
+        if (@$options['template']) {
+           $this->options['template'] = $options['template'];
+        } else {
+            $this->options['template'] = "jh9RobokassaBundle:Twig:payForm.html.twig";
+        }
 
+        if (@$options['Encoding']) {
+            $this->options['Encoding'] = $options['Encoding'];
+        } else {
+            $this->options['Encoding'] = 'utf-8';
+        }
 
+        if (@$options['IncCurrLabel']) {
+            $this->options['IncCurrLabel'] = $options['IncCurrLabel'];
+        }
+
+        if (@$options['Desc']) {
+            $this->options['Desc'] = $options['Desc'];
+        }
+
+    }
 }

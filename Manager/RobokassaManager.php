@@ -1,7 +1,7 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: jh
+ * @author j Alex
  * Date: 31.10.13
  * Time: 15:48
  */
@@ -16,6 +16,7 @@ use jh9\RobokassaBundle\Model\RobokassaFormProviderInterface;
 use jh9\RobokassaBundle\Model\RobokassaResultProcessorInterface;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormInterface;
 
 class RobokassaManager implements RobokassaFormProviderInterface, RobokassaResultProcessorInterface
 {
@@ -42,7 +43,7 @@ class RobokassaManager implements RobokassaFormProviderInterface, RobokassaResul
         $this->password2 = $password2;
     }
 
-    public function createForm($orderId, $outSum)
+    public function createForm($orderId, $outSum, $options)
     {
         $model = new PayModel();
         $model->setMrchLogin($this->login)
@@ -52,7 +53,27 @@ class RobokassaManager implements RobokassaFormProviderInterface, RobokassaResul
         ;
         $this->generateRequestSignature($model);
 
-        return $this->factory->create(new RobokassaPayType(), $model, array('action' => $this->_generateUrl()));
+        $form = $this->factory->create(new RobokassaPayType(), $model, array('action' => $this->_generateUrl()));
+
+        $this->resolveOptions($form, $options, $model);
+
+        return $form;
+    }
+
+    protected function resolveOptions(FormInterface $form, $options, PayModel $pm)
+    {
+        if (@$options['Encoding']) {
+            $pm->setEncoding($options['Encoding']);
+            $form->add('Encoding', 'hidden');
+        }
+        if (@$options['Desc']) {
+            $pm->setDesc($options['Desc']);
+            $form->add('Desc', 'hidden');
+        }
+        if (@ $options['IncCurrLabel']) {
+            $pm->setIncCurrLabel($options['IncCurrLabel']);
+            $form->add('IncCurrLabel', 'hidden');
+        }
     }
 
     private function generateRequestSignature(PayModel $pm)

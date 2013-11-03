@@ -45,7 +45,14 @@ in your template (to generate the "pay" button):
 
 ```jinja
 #pay_order.html.twig
-    {{ jh9_robokassa_form(order.id, order.price) }}
+    {{ jh9_robokassa_form(order.id, order.price {# (optional) , {
+                "template": "jh9RobokassaBundle:Twig:payForm.html.twig", {# default #}
+                "Desc": "my description", {# default null #}
+                "IncCurrLabel": "WMZM", {# default null #}
+                "Encoding": "utf-8" {# default #}
+            }
+        #}
+    ) }}
 ```
 
 in your result action:

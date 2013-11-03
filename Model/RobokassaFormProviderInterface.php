@@ -14,5 +14,5 @@ interface RobokassaFormProviderInterface
     /**
      * @return Form
      */
-    function createForm($orderId, $outSum);
+    function createForm($orderId, $outSum, $options);
 } 
