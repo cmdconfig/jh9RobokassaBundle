@@ -1,7 +1,7 @@
 RobokassaBundle
 ===============
 
-[Описание на русском](https://github.com/jh9aea/jh9RobokassaBundle/README.ru.md)
+[Описание на русском](https://github.com/jh9aea/jh9RobokassaBundle/blob/master/README.ru.md)
 
 current version supports only POST methods
 
