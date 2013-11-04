@@ -1,3 +1,0 @@
-jh9_robokassa_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: jh9RobokassaBundle:Default:index }
