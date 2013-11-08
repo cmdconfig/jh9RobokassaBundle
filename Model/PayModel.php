@@ -102,7 +102,7 @@ class PayModel
      */
     public function setOutSum($OutSum)
     {
-        $this->OutSum = number_format($OutSum, 2);
+        $this->OutSum = number_format($OutSum, 2, '.', '.');
         return $this;
     }
 
