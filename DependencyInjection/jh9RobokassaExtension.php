@@ -26,6 +26,7 @@ class jh9RobokassaExtension extends Extension
         $container->setParameter('jh9.robokassa.password1', $config['password1']);
         $container->setParameter('jh9.robokassa.password2', $config['password2']);
         $container->setParameter('jh9.robokassa.test', $config['test']);
+        $container->setParameter('jh9.robokassa.url', $config['test']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

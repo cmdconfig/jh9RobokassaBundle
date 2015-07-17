@@ -24,6 +24,7 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('password1')->isRequired()->end()
             ->scalarNode('password2')->isRequired()->end()
             ->scalarNode('test')->defaultTrue()->end()
+            ->scalarNode('url')->defaultTrue()->end()
         ->end();
 
         // Here you should define the parameters that are allowed to
