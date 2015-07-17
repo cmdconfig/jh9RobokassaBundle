@@ -102,6 +102,10 @@ class RobokassaManager implements RobokassaFormProviderInterface, RobokassaResul
 
     private function _generateUrl()
     {
+        if(!empty($this->url)){
+            return $this->url;
+        }
+
         if ($this->test) {
             return RobokassaConst::testUrl;
         } else {
