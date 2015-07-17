@@ -1,5 +1,5 @@
 {
-    "name": "jh9/robokassa-bundle",
+    "name": "cmdconfig/robokassa-bundle",
     "type": "symfony-bundle",
     "description": "robokassa support for symfony2",
     "keywords": ["Robokassa"],
