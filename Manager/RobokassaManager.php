@@ -34,13 +34,16 @@ class RobokassaManager implements RobokassaFormProviderInterface, RobokassaResul
 
     private $password2;
 
-    public function __construct($login, $password1, $password2, $test, FormFactory $factory)
+    private $url;
+
+    public function __construct($login, $password1, $password2, $test, FormFactory $factory, $url)
     {
         $this->login     = $login;
         $this->factory   = $factory;
         $this->test      = $test;
         $this->password1 = $password1;
         $this->password2 = $password2;
+        $this->url       = $url;
     }
 
     public function createForm($orderId, $outSum, $options)

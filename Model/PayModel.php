@@ -29,6 +29,26 @@ class PayModel
 
     protected $IncCurrLabel;
 
+    protected $url;
+
+    /**
+     * @return mixed
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param mixed $url
+     * @return PayModel
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+        return $this;
+    }
+
     /**
      * @param mixed $Desc
      */

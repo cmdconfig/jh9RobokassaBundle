@@ -7,7 +7,7 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
     jh9.robokassa.manager:
         class: jh9\RobokassaBundle\Manager\RobokassaManager
-        arguments: [ %jh9.robokassa.login%, %jh9.robokassa.password1%, %jh9.robokassa.password2%, %jh9.robokassa.test%, @form.factory ]
+        arguments: [ %jh9.robokassa.login%, %jh9.robokassa.password1%, %jh9.robokassa.password2%, %jh9.robokassa.test%, @form.factory, %url% ]
 
     jh9.robokassa.twig.form:
         class: jh9\RobokassaBundle\Twig\RobokassaExtension
