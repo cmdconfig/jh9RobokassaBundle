@@ -56,7 +56,11 @@ class RobokassaManager implements RobokassaFormProviderInterface, RobokassaResul
         ;
         $this->generateRequestSignature($model);
 
-        $form = $this->factory->create(new RobokassaPayType(), $model, array('action' => $this->_generateUrl()));
+        $form = $this->factory->create(
+            RobokassaPayType::class,
+            $model,
+            array('action' => $this->_generateUrl())
+        );
 
         $this->resolveOptions($form, $options, $model);
 
