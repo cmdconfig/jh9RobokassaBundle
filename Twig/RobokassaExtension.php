@@ -32,9 +32,7 @@ class RobokassaExtension extends \Twig_Extension
 
     public function getFunctions()
     {
-        return array(
-            'jh9_robokassa_form' => new \Twig_Function_Function(array($this, 'createFormView'), array('is_safe' => array('html')))
-        );
+        new \Twig_SimpleFunction('jh9_robokassa_form', array($this, 'createFormView'));
     }
 
     public function createFormView($orderId, $outSum, $options = array())

@@ -14,7 +14,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class RobokassaPayType extends AbstractType
 {
-    public function getName()
+    public function getBlockPrefix()
     {
         return '';
     }
